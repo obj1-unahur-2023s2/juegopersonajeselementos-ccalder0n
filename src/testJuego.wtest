@@ -1,0 +1,95 @@
+import elementos.*
+import armas.*
+import personajes.*
+import jugadores.*
+
+//elementos
+test "tipa arranca en 8 metros de altura" 
+{
+	assert.equals(8,tipa.altura())
+}
+
+test "tipa otorga 16 unidades de valor"
+{
+	assert.equals(16,tipa.valorQueOtorga())
+}
+
+
+test "castillo mide 20 metros de alto"
+{
+	assert.equals(20,castillo.altura())
+}
+
+test "castillo otorga 30 unidades de valor"
+{
+	assert.equals(30,castillo.valorQueOtorga())
+}
+
+test "aurora mide 1 metro de altura"
+{
+	assert.equals(1,aurora.altura())
+}
+
+test "aurora otorga 15 unidades de valor"
+{
+	assert.equals(15,aurora.valorQueOtorga())
+}
+
+test "nivel de defensa del castillo comienza en 150"
+{
+	assert.equals(150,castillo.nivelDeDefensa())
+}
+
+test "aurora esta viva"
+{
+	assert.that(aurora.estaViva())
+}
+
+//armas
+test "la ballesta arranca con 10 flechas"
+{
+	assert.equals(10,ballesta.cantidadDeMuniciones())
+}
+
+test "la potencia de la ballesta es 4"
+{
+	assert.equals(4,ballesta.potenciaDeArma())
+}
+test "la jabalina comienza cargada"
+{
+	assert.equals(1,jabalina.cantidadDeMuniciones())
+}
+
+test "la potencia de la jabalina es 30"
+{
+	assert.equals(30,jabalina.potenciaDeArma())
+}
+
+//personajes
+test "mario no es feliz"
+{
+	assert.notThat(mario.esFeliz())
+}
+
+//jugadores
+test "luisa usa a floki"
+{
+	luisa.personajeActivo(floki)
+	assert.equals(floki,luisa.personajeActivo())
+}
+
+
+test "luisa usando a floki se encuentra con el castillo, y el castillo queda con 146 de defensa"
+{
+	luisa.personajeActivo(floki)
+	floki.equiparArma(ballesta)
+	luisa.aparece(castillo)
+	assert.equals(146,castillo.nivelDeDefensa())
+}
+
+test "luisa usando a mario se encuentra con el castillo y este sube su defensa a 170"
+{
+	luisa.personajeActivo(mario)
+	luisa.aparece(castillo)
+	assert.equals(170,castillo.nivelDeDefensa())
+}
